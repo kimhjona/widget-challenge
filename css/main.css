@@ -7,6 +7,18 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: Quicksand;
+  font-size: 13px;
+  min-width: 20em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  padding: 0;
+  margin: 0;
 }
 
 button:focus,
@@ -15,35 +27,126 @@ textarea {
   outline: none;
 }
 
-.no-spacing {
-  padding: 0;
-  margin: 0;
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 0.49615em 0.76923em;
 }
 
-.footer-links {
-  padding: 4px 5px;
-  cursor: pointer;
-}
-
-.emailFbIcons {
-  margin: 0 14.75px;
-  cursor: pointer;
+textarea {
+  resize: none;
 }
 
 input[type="checkbox"] {
   border-radius: 0px;
 }
 
+.no-spacing {
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links {
+  cursor: pointer;
+}
+
+.emailFbIcons {
+  cursor: pointer;
+}
+
+.content-container {
+  padding: 0 2.1em;
+  max-width: 41em;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 22em;
+}
+
+.modifiedButton {
+  border: 1px solid #d8d8d8;
+  background-color: white;
+}
+
+.miniImage {
+  max-width: 11em;
+  height: auto;
+}
+
+.icon-spacing-id {
+  display: inline-block;
+  /* height: 8em; */
+  /* line-height: 2em; */
+  position: relative;
+  vertical-align: middle;
+
+  /* width: 2em; */
+}
+
+.small-font {
+  font-size: 0.75em;
+}
+.copy-image {
+  color: #980a00;
+  padding: 8px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.almost-bold {
+  font-weight: 500;
+}
+
+.white-circle {
+  border: 1px solid #980a00;
+  border-radius: 50%;
+  width: 1.5em !important;
+  height: 1.5em;
+}
+
+.colored-circle {
+  border: 1px solid #980a00;
+  border-radius: 50%;
+  width: 1.5em !important;
+  height: 1.5em;
+  background-color: #980a00;
+}
+
+.libre-font {
+  font-family: "Libre Baskerville";
+}
+
+.colored-logo {
+  color: #980a00;
+}
+
+.white-logo {
+  color: white;
+}
+
+.adding-line-height {
+  line-height: 1.5em !important;
+}
+
 #call-to-action-button {
   cursor: pointer;
   border: 2px solid #980a00;
   color: #980a00;
+  padding: 0 5em;
+  background-color: white;
 }
 
 #call-to-action-button:hover,
 #call-to-action-button:focus {
   background-color: #980a00;
   color: white;
+}
+
+#iconsContainer {
+  width: 50%;
+}
+
+#copiedPersonalMessage {
+  min-width: 11em;
 }
 
 #container-largest-text {
@@ -56,45 +159,18 @@ input[type="checkbox"] {
   /* height: auto; */
 }
 
-.content-container {
-  padding: 0 2.3em;
-  max-width: 31em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.modifiedButton {
-  border: 1px solid #d8d8d8;
-  background-color: white;
-}
-
-.miniImage {
-  width: 129px;
-  height: auto;
-}
-
-.copy-image {
-  color: #980a00;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.white-circle {
-  border: 1px solid #980a00;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-}
-
-.no-white-circle {
-  padding: 1px;
-}
-
-.colored-logo {
-  color: #980a00;
+@media only screen and (max-width: 64em) {
+  body,
+  html {
+    font-size: 11px;
+  }
 }
 
 @media only screen and (max-width: 48em) {
+  body,
+  html {
+    font-size: 9px;
+  }
   #desktop-image {
     display: none;
   }
@@ -111,4 +187,9 @@ input[type="checkbox"] {
     width: 100%;
     height: auto;
   }
+
+  /* .white-circle {
+    width: 24px !important;
+    height: 24px;
+  } */
 }

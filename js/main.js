@@ -29,12 +29,13 @@ const toEmailPage = () => {
   // }
 
   $(
-    "#emailPageInputs, #linkToShare>div.d-none, #iconsContainer>div.d-none, #container-subtext"
+    "#emailPageInputs, #linkToShare>div.d-none, #emailIcon, #fbIcon, #container-subtext"
   ).removeClass("d-none");
-  $("#call-to-action-button>div").html("Send");
+  $("#emailPageInputs>div>input[placeholder='To']").focus();
   $(
-    "#infoMessage, #startPageEmailInput, #fbPageInput, #mobileImageOnTop"
+    "#infoMessage, #startPageEmailInput, #fbPageInput, #mobileImageOnTop, #call-to-action-button>i"
   ).addClass("d-none");
+  $("#call-to-action-button>h2").html("Send");
   $("#emailAddressPaste").val(capturedEmail);
 
   switchIconColors("email");
@@ -44,7 +45,8 @@ const toEmailPage = () => {
 const toThanksPage = () => {
   console.log("to thanks!");
 
-  $("#call-to-action-button>div").html("Share Again");
+  $("#call-to-action-button").blur();
+  $("#call-to-action-button>h2").html("Share Again");
   $("#infoMessage")
     .html(
       "<p>Once your friend makes their first purchase of $35+, you'll find your $20 reward in your inbox.</p><p>Don't stop there! The more you share, the more rewards you'll get!</p>"
@@ -54,7 +56,6 @@ const toThanksPage = () => {
   $(
     "#emailPageInputs, #linkToShare>div.d-none, #iconsContainer>div.d-none, #container-subtext, #fbPageInput, .fa-facebook-square"
   ).addClass("d-none");
-
   switchIconColors("thanks");
   updateBigImageOnSide();
 };
@@ -67,7 +68,8 @@ const toFacebookPage = () => {
 
   $("#fbPageInput, .fa-facebook-square").removeClass("d-none");
   $("#copiedPersonalMessage").html(personalMessageFromEmailInput);
-  $("#call-to-action-button>div").html("Share");
+  $("#fbPageInput>textarea").focus();
+  $("#call-to-action-button>h2").html("Share");
   $("#emailPageInputs").addClass("d-none");
 
   switchIconColors("fb");
@@ -83,8 +85,8 @@ const undoingChangedThingsFromHavingVisitedTheThanksPage = () => {
 
 const updateBigImageOnSide = () => {
   if (
-    $("#call-to-action-button>div").html() === "Send" ||
-    $("#call-to-action-button>div").html() === "Share"
+    $("#call-to-action-button>h2").html() === "Send" ||
+    $("#call-to-action-button>h2").html() === "Share"
   ) {
     $("#desktop-image>img").attr("src", "./img/MorganAnn_OverlayShare.png");
   } else {
@@ -92,31 +94,50 @@ const updateBigImageOnSide = () => {
   }
 };
 
+unColorIcon = iconToUnColor => {
+  $(`#${iconToUnColor}Icon > div > i`)
+    .addClass("white-circle")
+    .removeClass("colored-circle white-logo");
+};
+
+colorIcon = iconToColor => {
+  $(`#${iconToColor}Icon > div > i`)
+    .addClass("colored-circle white-logo")
+    .removeClass("white-circle");
+};
+
 const switchIconColors = currentPage => {
-  if (currentPage === "thanks") {
-    const emailIconIsColored = $("#emailIcon > i.fa-stack-2x").hasClass(
-      "colored-logo"
-    );
-    iconToUnColor = emailIconIsColored ? "email" : "fb";
-    otherIcon = emailIconIsColored ? "fb" : "email";
-    console.log("icon to uncolor", iconToUnColor);
-    $(`#${iconToUnColor}Icon > i.fa-stack-2x`).addClass("d-none");
-    $(`#${iconToUnColor}Icon > i.fa-stack-1x`)
-      .addClass("white-circle colored-logo")
-      .removeClass("fa-inverse");
-    return;
+  let otherPage;
+  if (currentPage !== "thanks") {
+    otherPage = currentPage === "email" ? "fb" : "email";
   }
-  const otherPage = currentPage === "email" ? "fb" : "email";
 
-  $(`#${otherPage}Icon > i.fa-stack-2x`).removeClass("colored-logo");
-  $(`#${currentPage}Icon > i.fa-stack-1x`)
-    .removeClass("white-circle colored-logo")
-    .addClass("fa-inverse");
-  $(`#${currentPage}Icon > i.fa-stack-2x`).removeClass("d-none");
+  unColorIcon(otherPage);
+  colorIcon(currentPage);
 
-  $(`#${currentPage}Icon > i.fa-stack-2x`).addClass("colored-logo");
-  $(`#${otherPage}Icon > i.fa-stack-1x`)
-    .addClass("white-circle colored-logo")
-    .removeClass("fa-inverse");
-  $(`#${otherPage}Icon > i.fa-stack-2x`).addClass("d-none");
+  // if (currentPage === "thanks") {
+  //   const emailIconIsColored = $("#emailIcon > i.fa-stack-2x").hasClass(
+  //     "colored-logo"
+  //   );
+  //   iconToUnColor = emailIconIsColored ? "email" : "fb";
+  //   otherIcon = emailIconIsColored ? "fb" : "email";
+  //   $(`#${iconToUnColor}Icon > i.fa-stack-2x`).addClass("d-none");
+  //   $(`#${iconToUnColor}Icon > i.fa-stack-1x`)
+  //     .addClass("white-circle colored-logo")
+  //     .removeClass("fa-inverse");
+  //   return;
+  // }
+
+  // $(`#${otherPage}Icon > i.fa-stack-2x`).removeClass("colored-logo");
+  // $(`#${currentPage}Icon > i.fa-stack-1x`)
+  //   .removeClass("white-circle colored-logo")
+  //   .addClass("fa-inverse");
+  // // $(`#${currentPage}Icon > i.fa-stack-2x`).removeClass("d-none");
+  // $(`#${currentPage}Icon > i`).removeClass("d-none");
+
+  // $(`#${currentPage}Icon > i.fa-stack-2x`).addClass("colored-logo");
+  // $(`#${otherPage}Icon > i.fa-stack-1x`)
+  //   .addClass("white-circle colored-logo")
+  //   .removeClass("fa-inverse");
+  // $(`#${otherPage}Icon > i.fa-stack-2x`).addClass("d-none");
 };
