@@ -22,58 +22,70 @@
   <div class="h-100">
     <div class="d-flex justify-content-between h-100">
       <div class="d-flex flex-column w-100">
-        <div class="col w-100 no-spacing">
+        <div class="col w-100 no-spacing h-100">
           <div>
             <img src="./img/MorganAnn_Facebook.jpg" id="mobileImageOnTop" alt="">
           </div>
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center personal-h-75" id="content-container">
             <div class="text-center content-container">
               <h1 class="text-center libre-font font-weight-bold display-4 pt-5 pb-3" id="container-largest-text">
                 Get $20 for every friend you refer
               </h1>
-              <h2 class="text-center almost-bold pt-2 pb-1" id="container-subtext">
+              <h2 class="text-center font-weight-bold pt-2 pb-1 mb-3" id="container-subtext">
                 Your friends get $20 and you get $20 after their first purchase of $35+
               </h2>
               <div class="d-flex flex-row justify-content-center mx-auto" id="iconsContainer">
-                <div class="emailFbIcons d-none mx-auto icon-spacing-id my-5" id="emailIcon">
+                <div class="emailFbIcons d-none mx-auto icon-spacing-id my-3" id="emailIcon">
                   <div class="d-flex align-items-center">
                     <i class="far fa-envelope white-circle colored-logo fa-3x adding-line-height"></i>
                   </div>
                 </div>
-                <div class="emailFbIcons d-none mx-auto icon-spacing-id my-5" id="fbIcon">
+                <div class="emailFbIcons d-none mx-auto icon-spacing-id my-3" id="fbIcon">
                   <div class="d-flex align-items-center">
                     <i class="fab fa-facebook-f white-circle colored-logo fa-3x adding-line-height"></i>
                   </div>
                 </div>
               </div>
-              <h3 class="pt-5" id="infoMessage">
+              <h3 class="pt-5 mb-3" id="infoMessage">
                 Enter your email to start sharing with friends:
               </h3>
               <div id="startPageEmailInput">
                 <input type="email" class="w-100 my-4 py-2" placeholder="Email Address...">
               </div>
-              <div class="text-center d-none" id="emailPageInputs">
+              <div class="text-center d-none my-3" id="emailPageInputs">
                 <div>
-                  <input type="text" class="w-100 " placeholder="To">
+                  <input type="text" class="w-100 mb-3" placeholder="To">
                 </div>
                 <div>
-                  <input type="text" class="w-100" disabled id="emailAddressPaste">
+                  <input type="text" class="w-100 mb-3" disabled id="emailAddressPaste">
                 </div>
                 <div>
                   <textarea maxlength="300" id="personalMessageFromEmailInput" rows="4" cols="50" class="w-100" placeholder="">If you love stylish clothes that are affordable too, then you've got to check out Morgan Ann! Their clothes are also made from 100% recycled material! Here's $20 off your first order of $35+. You can thank me later :)</textarea>
                 </div>
                 <div class="d-flex flex-row">
-                  <input type="checkbox" class="my-auto">
+                  <div class="mr-2 my-auto">
+                    <div class="fake-checkbox 1">
+                      <div class="d-flex align-items-start">
+                        <i class="fas fa-check checkbox-width-height"></i>
+                      </div>
+                    </div>
+                  </div>
                   <div>Send my friend a reminder in 3 days</div>
                 </div>
                 <div class="d-flex flex-row">
-                  <input type="checkbox" class="my-auto">
+                  <div class="mr-2 my-auto">
+                    <div class="fake-checkbox 2">
+                      <div class="d-flex align-items-start">
+                        <i class="fas fa-check checkbox-width-height"></i>
+                      </div>
+                    </div>
+                  </div>
                   <div>Sign up for our emails</div>
                 </div>
               </div>
               <div id="fbPageInput" class="d-none">
                 <textarea maxlength="300" rows="4" cols="50" class="w-100" placeholder="Add a personal message..."></textarea>
-                <div class="d-flex flex-row">
+                <div class="d-flex flex-row align-items-center">
                   <div>
                     <img src="./img/MorganAnn_Facebook.jpg" class="miniImage" alt="">
                   </div>
@@ -86,16 +98,16 @@
                   </div>
                 </div>
               </div>
-              <div class="text-center">
+              <div class="text-center mt-5 mb-5">
                 <button id="call-to-action-button" class="d-flex flex-row mx-auto libre-font">
                   <i class="fab fa-facebook-square d-none my-auto fa-2x pr-3  "></i>
-                  <h2 class="my-2 text-nowrap text-uppercase">
+                  <h2 class="my-3 text-nowrap text-uppercase">
                     Start Sharing
                   </h2>
                 </button>
               </div>
-              <div class="d-flex flex-row" id="linkToShare">
-                <div class="d-none my-auto">
+              <div class="d-flex justify-content-between mt-4" id="linkToShare">
+                <div class="d-none my-auto font-rem">
                   And share your link wherever:
                 </div>
                 <div class="d-none">
@@ -124,6 +136,9 @@
       <div class="h-100" id="desktop-image">
         <img src="./img/MorganAnn_OverlayShare.png" class="h-100" alt="">
       </div>
+    </div>
+    <div class="x-close-symbol fa-2x">
+      <i class="fas fa-times"></i>
     </div>
   </div>
 

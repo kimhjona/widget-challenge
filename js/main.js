@@ -2,7 +2,22 @@ $(document).ready(function() {
   $("#call-to-action-button").on("click", toAnotherPage);
   $("#emailIcon").on("click", toEmailPage);
   $("#fbIcon").on("click", toFacebookPage);
+  $(".fake-checkbox.1").click(function() {
+    toggleCheckBox(1);
+  });
+  $(".fake-checkbox.2").click(function() {
+    toggleCheckBox(2);
+  });
 });
+
+const toggleCheckBox = number => {
+  const hasClass = !$(`.fake-checkbox.${number}>div>i`).hasClass("d-none");
+  if (hasClass) {
+    $(`.fake-checkbox.${number}>div>i`).addClass("d-none");
+  } else {
+    $(`.fake-checkbox.${number}>div>i`).removeClass("d-none");
+  }
+};
 
 const toAnotherPage = () => {
   const callToActionText = $("#call-to-action-button")
@@ -23,11 +38,12 @@ const toEmailPage = () => {
   const capturedEmail = $("#startPageEmailInput input").val();
   const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
-  // if (!regex.test(capturedEmail)) {
-  //   alert("Please enter a valid email address");
-  //   return;
-  // }
+  if (!regex.test(capturedEmail)) {
+    alert("Please enter a valid email address");
+    return;
+  }
 
+  $("#content-container").removeClass("personal-h-75 personal-h-100");
   $(
     "#emailPageInputs, #linkToShare>div.d-none, #emailIcon, #fbIcon, #container-subtext"
   ).removeClass("d-none");
@@ -45,6 +61,7 @@ const toEmailPage = () => {
 const toThanksPage = () => {
   console.log("to thanks!");
 
+  $("#content-container").addClass("personal-h-100");
   $("#call-to-action-button").blur();
   $("#call-to-action-button>h2").html("Share Again");
   $("#infoMessage")
@@ -66,6 +83,7 @@ const toFacebookPage = () => {
     "#personalMessageFromEmailInput"
   ).val();
 
+  $("#content-container").removeClass("personal-h-100");
   $("#fbPageInput, .fa-facebook-square").removeClass("d-none");
   $("#copiedPersonalMessage").html(personalMessageFromEmailInput);
   $("#fbPageInput>textarea").focus();
@@ -94,13 +112,13 @@ const updateBigImageOnSide = () => {
   }
 };
 
-unColorIcon = iconToUnColor => {
+const unColorIcon = iconToUnColor => {
   $(`#${iconToUnColor}Icon > div > i`)
     .addClass("white-circle")
     .removeClass("colored-circle white-logo");
 };
 
-colorIcon = iconToColor => {
+const colorIcon = iconToColor => {
   $(`#${iconToColor}Icon > div > i`)
     .addClass("colored-circle white-logo")
     .removeClass("white-circle");
@@ -110,34 +128,12 @@ const switchIconColors = currentPage => {
   let otherPage;
   if (currentPage !== "thanks") {
     otherPage = currentPage === "email" ? "fb" : "email";
+  } else {
+    unColorIcon("email");
+    unColorIcon("fb");
+    return;
   }
 
   unColorIcon(otherPage);
   colorIcon(currentPage);
-
-  // if (currentPage === "thanks") {
-  //   const emailIconIsColored = $("#emailIcon > i.fa-stack-2x").hasClass(
-  //     "colored-logo"
-  //   );
-  //   iconToUnColor = emailIconIsColored ? "email" : "fb";
-  //   otherIcon = emailIconIsColored ? "fb" : "email";
-  //   $(`#${iconToUnColor}Icon > i.fa-stack-2x`).addClass("d-none");
-  //   $(`#${iconToUnColor}Icon > i.fa-stack-1x`)
-  //     .addClass("white-circle colored-logo")
-  //     .removeClass("fa-inverse");
-  //   return;
-  // }
-
-  // $(`#${otherPage}Icon > i.fa-stack-2x`).removeClass("colored-logo");
-  // $(`#${currentPage}Icon > i.fa-stack-1x`)
-  //   .removeClass("white-circle colored-logo")
-  //   .addClass("fa-inverse");
-  // // $(`#${currentPage}Icon > i.fa-stack-2x`).removeClass("d-none");
-  // $(`#${currentPage}Icon > i`).removeClass("d-none");
-
-  // $(`#${currentPage}Icon > i.fa-stack-2x`).addClass("colored-logo");
-  // $(`#${otherPage}Icon > i.fa-stack-1x`)
-  //   .addClass("white-circle colored-logo")
-  //   .removeClass("fa-inverse");
-  // $(`#${otherPage}Icon > i.fa-stack-2x`).addClass("d-none");
 };
