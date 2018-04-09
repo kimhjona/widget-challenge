@@ -231,6 +231,10 @@ input[type="checkbox"] {
   margin-top: -2px;
 }
 
+.different-font {
+  font-size: 13.4px !important;
+}
+
 #linkToShare {
   display: flex;
   justify-content: space-between;
@@ -385,6 +389,10 @@ input[type="checkbox"] {
     display: none;
   }
 
+  #infoMessage {
+    margin-top: 15px !important;
+  }
+
   #copy-button {
     display: none;
   }
@@ -405,6 +413,7 @@ input[type="checkbox"] {
   .modifiedButton {
     width: 166px;
     height: 34.43px;
+    margin-top: 2px;
   }
 
   .colored-logo {
@@ -422,6 +431,10 @@ input[type="checkbox"] {
 
   .font-weight-bold.pb-1 {
     padding-top: 8px;
+  }
+
+  .smaller-margin {
+    margin-top: -4px !important;
   }
 }
 

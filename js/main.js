@@ -48,6 +48,7 @@ const toEmailPage = () => {
   //   return;
   // }
 
+  $("#linkToShare").addClass("smaller-margin");
   $("#container-largest-text").addClass("mt-5");
   $("#infoMessage").removeClass("pb-3 different-font");
   $("#iconsContainer").removeClass("mt-5");
@@ -72,6 +73,10 @@ const toEmailPage = () => {
 const toThanksPage = () => {
   console.log("to thanks!");
 
+  $("#linkToShare").removeClass("smaller-margin");
+  $("#linkToShare")
+    .removeClass("mt-4")
+    .addClass("pt-2 mt-5");
   $("#container-largest-text").removeClass("mt-5");
   $("#infoMessage").addClass("pb-3 different-font");
   $("#iconsContainer").addClass("mt-5");
@@ -97,6 +102,7 @@ const toFacebookPage = () => {
     "#personalMessageFromEmailInput"
   ).val();
 
+  $("#linkToShare").addClass("smaller-margin");
   $("#container-largest-text").addClass("mt-5");
   $("#infoMessage").removeClass("pb-3");
   $("#iconsContainer").removeClass("mt-5");
